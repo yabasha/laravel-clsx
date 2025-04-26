@@ -1,0 +1,28 @@
+{
+    "name": "yabasha/laravel-clsx",
+    "description": "A Laravel utility for conditional class name concatenation, inspired by the JS clsx package.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yabasha",
+            "email": "bashar.ayyash@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yabasha\\Clsx\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": []
+        }
+    }
+}
