@@ -63,7 +63,7 @@ Register the Blade directive by ensuring the service provider is loaded (auto-di
 Add error classes easily:
 
 ```php
-<input class="{{ clsx_with_error('email', $errors, 'is-invalid', 'form-input') }}" type="email" name="email">
+<input class="{{ clsx_with_error('email', $errors, 'is-invalid', 'form-input') }}" type="email" name="email" />
 ```
 
 ### In Blade Templates
