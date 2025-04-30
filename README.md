@@ -5,7 +5,12 @@ A Laravel utility for conditional class name concatenation, inspired by the popu
 ## Features
 
 - Concatenate class names based on conditions
+- Supports arbitrarily nested arrays of class names
+- Optional transformation/filter callback for class names
 - Use as a global helper (`clsx()`) or as a static class (`Clsx::make()`)
+- Macroable: extend with your own methods
+- Blade directive: `@clsx` for easy usage in Blade templates
+- Validation helper: `clsx_with_error()` for error class toggling
 - Perfect for Blade templates and PHP code
 
 ## Installation
@@ -15,6 +20,51 @@ composer require yabasha/laravel-clsx
 ```
 
 ## Usage
+
+### Nested Arrays
+
+You can pass deeply nested arrays and all class names will be flattened:
+
+```php
+$classString = clsx(['foo', ['bar', ['baz']]]); // "foo bar baz"
+```
+
+### Filtering/Transformation Callback
+
+Optionally pass a callable as the last argument to transform class names:
+
+```php
+$classString = clsx('foo', 'bar', function($c) { return strtoupper($c); }); // "FOO BAR"
+```
+
+### Macroable (Extending Clsx)
+
+You can add your own macros to Clsx:
+
+```php
+use Yabasha\Clsx\Clsx;
+Clsx::macro('withPrefix', function ($prefix, ...$args) {
+    return Clsx::make(...array_map(fn($c) => $prefix.$c, $args));
+});
+// Usage:
+$classes = Clsx::withPrefix('tw-', 'foo', 'bar'); // "tw-foo tw-bar"
+```
+
+### Blade Directive
+
+Register the Blade directive by ensuring the service provider is loaded (auto-discovered):
+
+```blade
+<div class="@clsx('foo', ['bar' => $isBar])"></div>
+```
+
+### Validation Helper
+
+Add error classes easily:
+
+```php
+<input class="<?= clsx_with_error('email', $errors, 'is-invalid', 'form-input') ?>">
+```
 
 ### In Blade Templates
 
