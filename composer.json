@@ -12,6 +12,9 @@
     "require": {
         "php": "^8.0"
     },
+    "suggest": {
+        "illuminate/support": "For macroable and Blade directive support"
+    },
     "autoload": {
         "psr-4": {
             "Yabasha\\Clsx\\": "src/"
@@ -22,7 +25,9 @@
     },
     "extra": {
         "laravel": {
-            "providers": []
+            "providers": [
+                "Yabasha\\Clsx\\LaravelClsxServiceProvider"
+            ]
         }
     }
 }
