@@ -13,12 +13,6 @@
             "role": "Developer"
         }
     ],
-    "authors": [
-        {
-            "name": "Yabasha",
-            "email": "bashar.ayyash@gmail.com"
-        }
-    ],
     "require": {
         "php": "^8.0"
     },
